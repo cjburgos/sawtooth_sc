@@ -1,6 +1,6 @@
 const { TransactionProcessor } = require('sawtooth-sdk/processor')
 
-const MMHandler = require('./processor/MM_handler')
+const MMHandler = require('./processor/mm_handler')
 
 const transactionProcessor = new TransactionProcessor('127.0.0.1:4004')
 
