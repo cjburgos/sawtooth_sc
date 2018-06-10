@@ -60,7 +60,7 @@ class MMState {
 
 const _hash = (x) => crypto.createHash('sha512').update(x).digest('hex').toUpperCase().substring(0, 64)
 
-const MM_FAMILY = 'MM'
+const MM_FAMILY = 'Material'
 const MM_NAMESPACE = _hash(MM_FAMILY).substr(0,6)
 
 const _makeMMAddress = (x) => MM_NAMESPACE + _hash(ID)
