@@ -3,7 +3,7 @@
 
 const MMPayload = require('./mm_payload')
 
-const { MM_NAMESPACE, MM_FAMILY, MMState } = require('./MM_state')
+const { MM_NAMESPACE, MM_FAMILY, MMState } = require('./mm_state')
 
 const { TransactionHandler } = require('sawtooth-sdk/processor/handler')
 const { InvalidTransaction } = require('sawtooth-sdk/processor/exceptions')
