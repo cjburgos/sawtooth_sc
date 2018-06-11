@@ -8,7 +8,6 @@ const { MM_NAMESPACE, MM_FAMILY, MMState } = require('./mm_state')
 const { TransactionHandler } = require('sawtooth-sdk/processor/handler')
 const { InvalidTransaction } = require('sawtooth-sdk/processor/exceptions')
 
-
 class MMHandler extends TransactionHandler {
   constructor () {
     super(MM_FAMILY, ['1.0'], [MM_NAMESPACE])

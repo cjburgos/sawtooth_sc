@@ -26,7 +26,7 @@ class MMPayload {
     this.Quantity = Quantity
   }
 
-  static fromBytes (payload) {
+  static fromBytes(payload) {
     payload = payload.toString().split(',')
     if (payload.length === 3) {
       let MMPayload = new MMPayload(payload[0], payload[1], payload[2])
