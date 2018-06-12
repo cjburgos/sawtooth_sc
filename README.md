@@ -1,6 +1,10 @@
-# Material Transaction Processor
+# **Material Transaction Processor**
+
+## Overview
 
 A transaction processor module for asset creation using Hyperledger Sawtooth blockchain network. 
+
+## Transaction Processor Set-Up
 
 First, bring up the network using the following command:
 
@@ -43,8 +47,10 @@ You should see the following message:
 Starting Material Transaction Processor
 Connecting to Sawtooth validator at XXX.XXX.XXX.XXX...
 Registered...
-
 ```
+
+## Client Set-Up
+
 After the registration of the Material Transaction processor is completed, navigate to the material-client-js folder and execute the following commands:
 
 `cd material-client-js`
@@ -55,7 +61,7 @@ After the installation is completed, you can use the following command to submit
 
 `$ node index.js --T [string] --Verb [ Create | Update ]`
 
-The --T argument needs will receive an object, in the form of a string,that will contain the properties required to create/update the Material. The properties are:
+The --T argument will receive an object, in the form of a string,that will contain the properties required to create/update the Material. The properties are:
 
 - **ID:** the Material's ID (i.e. 001)
 - **Name:** the Material's name (i.e. Pizza)
@@ -64,7 +70,8 @@ The --T argument needs will receive an object, in the form of a string,that will
 - **Price:** the Material's price *Must be an integer (do not use '')
 - **Cost:** the Material's cost *Must be an integer (do not use '')
 
-References:
+##References:
 
-Hyperledger Sawtooth v1.0.4 Documentation (https://sawtooth.hyperledger.org/docs/core/releases/1.0/introduction.html)
+**Hyperledger Sawtooth v1.0.4 Documentation**
+(https://sawtooth.hyperledger.org/docs/core/releases/1.0/introduction.html)
 
