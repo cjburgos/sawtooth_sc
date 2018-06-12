@@ -14,22 +14,22 @@ Docker images will be downloaded to create the required containers to build the 
 
 The network is composed by the following containers:
 
-**1. settings-tp**
+**1. settings-tp**\
   The Settings Transaction Processor that allows a sysadmin to create proposal request to change settings within the Validators network
 
-**2. intkey-tp-python**
+**2. intkey-tp-python**\
   An implementation of the "intkey" sample transaction processor built in Python.
 
-**3. xo-tp-python**
+**3. xo-tp-python**\
   An implementation of the "xo" sample transaction processor built in Python.
 
-**4. Validator**
+**4. Validator**\
   Sawtooth-Validator container
 
-**5. REST-API**
+**5. REST-API**\
   A REST-API container that routes Client's Transaction Request submissions to the Validator and to the corresponding Transaction Handler
 
-**6. SHELL**
+**6. SHELL**\
   A shell container to access the Validator
 
 Once the it finishes downloading the images and starting the network,
@@ -72,5 +72,5 @@ The --T argument will receive an object, in the form of a string,that will conta
 
 ## References
 
-**Hyperledger Sawtooth v1.0.4 Documentation**  (https://sawtooth.hyperledger.org/docs/core/releases/1.0/introduction.html)
+**Hyperledger Sawtooth v1.0.4 Documentation**\(https://sawtooth.hyperledger.org/docs/core/releases/1.0/introduction.html)
 
