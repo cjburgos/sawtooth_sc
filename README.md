@@ -14,22 +14,22 @@ Docker images will be downloaded to create the required containers to build the 
 
 The network is composed by the following containers:
 
-**1. settings-tp**\
+**settings-tp**\
   The Settings Transaction Processor that allows a sysadmin to create proposal request to change settings within the Validators network
 
-**2. intkey-tp-python**\
+**intkey-tp-python**\
   An implementation of the "intkey" sample transaction processor built in Python.
 
-**3. xo-tp-python**\
+**xo-tp-python**\
   An implementation of the "xo" sample transaction processor built in Python.
 
-**4. Validator**\
+**Validator**\
   Sawtooth-Validator container
 
-**5. REST-API**\
+**REST-API**\
   A REST-API container that routes Client's Transaction Request submissions to the Validator and to the corresponding Transaction Handler
 
-**6. SHELL**\
+**SHELL**\
   A shell container to access the Validator
 
 Once the it finishes downloading the images and starting the network,
@@ -66,15 +66,13 @@ The argument --T must follow this structure:
 ` '{"ID":"001","Name":"Pizza","Group":"Frozen Food","Type":"Food","Price":20,"Cost":10,"Amount":100}' `
 
 
-- **ID:** the Material's ID (i.e. 001)
-- **Name:** the Material's name (i.e. Pizza)
-- **Group:** the Material's group (i.e. Frozen Food)
-- **Type:** the Material's type (i.e. Foods)
-- **Price:** the Material's price\
-  *Must be an integer
-- **Cost:** the Material's cost \
-  *Must be an integer
-- **Amount** the amount of Material on-hand
+**ID:** the Material's ID (i.e. 001)
+**Name:** the Material's name (i.e. Pizza)
+**Group:** the Material's group (i.e. Frozen Food)
+**Type:** the Material's type (i.e. Foods)
+**Price:** the Material's price
+**Cost:** the Material's cost
+**Amount** the amount of Material on-hand
 
 ## References
 
