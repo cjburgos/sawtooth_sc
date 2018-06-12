@@ -70,7 +70,7 @@ The --T argument will receive an object, in the form of a string,that will conta
 - **Price:** the Material's price *Must be an integer (do not use '')
 - **Cost:** the Material's cost *Must be an integer (do not use '')
 
-##References:
+## References
 
 **Hyperledger Sawtooth v1.0.4 Documentation**
 (https://sawtooth.hyperledger.org/docs/core/releases/1.0/introduction.html)
