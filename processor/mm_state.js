@@ -32,7 +32,7 @@ class MMState {
     }
 
     _loadMaterial (ID) {
-        let address = _makeMaterialAddress(ID)
+        let address = _makeMMAddress(ID)
         if (this.addressCache.has(address)) {
           //Si lo tiene, entonces...
           if (this.addressCache.get(address) === null) {
@@ -63,7 +63,7 @@ const _hash = (x) => crypto.createHash('sha512').update(x).digest('hex').toUpper
 const MM_FAMILY = 'Material'
 const MM_NAMESPACE = _hash(MM_FAMILY).substr(0,6)
 
-const _makeMMAddress = (x) => MM_NAMESPACE + _hash(ID)
+const _makeMMAddress = (x) => MM_NAMESPACE + _hash(x)
 
 module.exports = {
   MM_NAMESPACE,

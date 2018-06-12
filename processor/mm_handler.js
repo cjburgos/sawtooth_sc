@@ -1,12 +1,10 @@
 
 'use strict'
 
-const MMPayload = require('./mm_payload')
-
 const { MM_NAMESPACE, MM_FAMILY, MMState } = require('./mm_state')
-
 const { TransactionHandler } = require('sawtooth-sdk/processor/handler')
 const { InvalidTransaction } = require('sawtooth-sdk/processor/exceptions')
+
 
 class MMHandler extends TransactionHandler {
   constructor () {
@@ -14,32 +12,35 @@ class MMHandler extends TransactionHandler {
   }
 
   apply (transactionProcessRequest, context) {
-    let payload = MMPayload.fromBytes(transactionProcessRequest.payload)
-    let MMState = new MMState(context)
+    let pbuffer= transactionProcessRequest.payload
+    let State = new MMState(context)
     let header = transactionProcessRequest.header
     let creator = header.signerPublicKey
+    let payload = JSON.parse(pbuffer.toString('ascii',2,))
 
-    if (payload.action === 'Create') {
-      return MMState.getMaterial(payload.ID)
+    if (payload.Verb === 'Create') {
+      return State.getMaterial(payload.Name)
         .then((Material) => {
           if (Material !== undefined) {
             throw new InvalidTransaction('Invalid Action: Material already exists.')
           }
 
+          properties = payload.Properties
+
           let createdMaterial = {
-            ID: payload.ID,
-            Name: payload.Name,
-            Group: payload.Group,
-            Type: payload.Type,
+            ID: payload.Name,
+            Name: properties[0],
+            Group: properties[1],
+            Type: properties[2],
             Status: 'ACTIVE',
-            Price: payload.Price,
-            Cost: payload.Cost,
-            Amount: ''
+            Price: properties[3],
+            Cost: properties[4],
+            Amount: properties[5]
           }
 
           console.log('The Material '+createdMaterial.ID+'has been created with values '+createdMaterial)
 
-          return MMState.setMaterial(payload.ID, createdGame)
+          return MMState.setMaterial(payload.ID, createdMaterial)
         })
     } else if (payload.action === 'Update') {
       return MMState.getMaterial(payload.ID)

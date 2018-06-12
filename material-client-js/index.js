@@ -1,23 +1,22 @@
 const { EnclaveFactory } = require('./enclave')
 const { SawtoothClientFactory } = require('./sawtooth-client')
 const argv = require('yargs')
-  .usage('Usage: node $0 --ID [string] --verb [Create,Update] --Quantity [integer]')
+  .usage('Usage: node $0 --T [string] --verb [string]')
   .choices('verb', ['Create','Update'])
-  .number('Quantity')
-  .string(['verb','ID'])
-  .describe('ID', 'unique identifier for the entry')
+  .string(['T','verb'])
+  .describe('T', 'transaction object')
   .describe('verb', 'action to take on the entry')
-  .describe('Quantity', 'value to pass to the entry')
-  .example('node index.js --ID Material A --verb Action --Quantity 100')
   .wrap(null)
-  .demandOption(['ID', 'verb', 'Quantity'])
+  .demandOption(['T','verb'])
   .help('h')
   .alias('h', 'help')
   .argv
 
 const env = require('./env')
 const input = require('./input')
+const crypto = require('crypto')
 
+const _hash = (x) => crypto.createHash('sha512').update(x).digest('hex').toUpperCase().substring(0, 64)
 const enclave = EnclaveFactory(Buffer.from(env.privateKey, 'hex'))
 
 const MaterialClient = SawtoothClientFactory({
@@ -30,13 +29,13 @@ const MaterialTransactor = MaterialClient.newTransactor({
   familyVersion: env.familyVersion
 })
 
-const newPayload = {
-  Name: argv.ID,
-  Verb: argv.verb,
-  Value: argv.Quantity
-}
+const T_Obj = JSON.parse(argv.T)
 
-console.log(newPayload)
+const newPayload = {
+  Name: T_Obj.ID,
+  Properties: [T_Obj.Name, T_Obj.Group, T_Obj.Type, T_Obj.Price, T_Obj.Cost, T_Obj.Amount],
+  Verb: argv.verb,
+}
 
 if (input.payloadIsValid(newPayload)) {
   input.submitPayload(newPayload, MaterialTransactor)

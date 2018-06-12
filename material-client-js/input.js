@@ -1,12 +1,16 @@
+const cbor = require('cbor')
+
 const input = {
   payloadIsValid: (payload) => {
-    if (valueIsValid(payload.Value) && verbIsValid(payload.Verb) && nameIsValid(payload.Name)) return true
+    if (verbIsValid(payload.Verb) && nameIsValid(payload.Name)) return true
     else return false
   },
   submitPayload: async (payload, transactor) => {
     try {
       // Format the Sawtooth transaction
-      const txn = payload
+      const txn = JSON.stringify(payload)
+      console.log(txn)
+
       console.log(`Submitting transaction to Sawtooth REST API`)
       // Wait for the response from the validator receiving the transaction
       const txnRes = await transactor.post(txn)
@@ -38,7 +42,7 @@ const verbIsValid = (verb) => {
 }
 
 const nameIsValid = (name) => {
-  if (name.toString().length <= 20) return true
+  if (name.toString().length = 64) return true
   else return false
 }
 
