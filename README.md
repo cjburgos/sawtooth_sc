@@ -66,7 +66,7 @@ The argument --T must follow this structure:
 ` '{"ID":"001","Name":"Pizza","Group":"Frozen Food","Type":"Food","Price":20,"Cost":10,"Amount":100}' `
 
 
-**ID:**the Material's ID (i.e. 001)\
+**ID:** the Material's ID (i.e. 001)\
 **Name:** the Material's name (i.e. Pizza)\
 **Group:** the Material's group (i.e. Frozen Food)\
 **Type:** the Material's type (i.e. Foods)\
