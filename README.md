@@ -4,32 +4,34 @@ A transaction processor module for asset creation using Hyperledger Sawtooth blo
 
 First, bring up the network using the following command:
 
-$ sudo docker-compose up
+`$ sudo docker-compose up`
 
 Docker images will be downloaded to create the required containers to build the network. 
 
 The network is composed by the following containers:
 
-1. **settings-tp**
+**1. settings-tp**
    The Settings Transaction Processor that allows a sysadmin to create proposal request to change settings within the Validators network
 
-2. **intkey-tp-python**
+**2. intkey-tp-python**
    An implementation of the "intkey" sample transaction processor built in Python.
 
-3. **xo-tp-python**
+**3. xo-tp-python**
    An implementation of the "xo" sample transaction processor built in Python.
 
-4. **Validator**
+**4. Validator**
    Sawtooth-Validator container
 
-5. **REST-API**
+**5. REST-API**
    A REST-API container that routes Client's Transaction Request submissions to the Validator and to the corresponding Transaction Handler
 
-6. **SHELL**
+**6. SHELL**
    A shell container to access the Validator
 
-Once the you finished downloading the images and starting the network,
+Once the it finishes downloading the images and starting the network,
 open a new terminal window. Navigate to the Processor folder, and execute the following commands:
+
+`$ cd Processor`
 
 `$ npm install`
 
@@ -37,11 +39,15 @@ open a new terminal window. Navigate to the Processor folder, and execute the fo
 
 You should see the following message:
 
-`Starting Material Transaction Processor`
-`Connecting to Sawtooth validator at XXX.XXX.XXX.XXX...`
-`Registered...`
+```
+Starting Material Transaction Processor
+Connecting to Sawtooth validator at XXX.XXX.XXX.XXX...
+Registered...
 
+```
 After the registration of the Material Transaction processor is completed, navigate to the material-client-js folder and execute the following commands:
+
+`cd material-client-js`
 
 `$ npm install`
 
@@ -57,4 +63,8 @@ The --T argument needs will receive an object, in the form of a string,that will
 - **Type:** the Material's type (i.e. Foods)
 - **Price:** the Material's price *Must be an integer (do not use '')
 - **Cost:** the Material's cost *Must be an integer (do not use '')
+
+References:
+
+Hyperledger Sawtooth v1.0.4 Documentation (https://sawtooth.hyperledger.org/docs/core/releases/1.0/introduction.html)
 
