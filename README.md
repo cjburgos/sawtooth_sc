@@ -61,14 +61,20 @@ After the installation is completed, you can use the following command to submit
 
 `$ node index.js --T [string] --Verb [ Create | Update ]`
 
-The --T argument will receive an object, in the form of a string,that will contain the properties required to create/update the Material. The properties are:
+The argument --T must follow this structure:
+
+` '{"ID":"001","Name":"Pizza","Group":"Frozen Food","Type":"Food","Price":20,"Cost":10,"Amount":100}' `
+
 
 - **ID:** the Material's ID (i.e. 001)
 - **Name:** the Material's name (i.e. Pizza)
 - **Group:** the Material's group (i.e. Frozen Food)
 - **Type:** the Material's type (i.e. Foods)
-- **Price:** the Material's price *Must be an integer (do not use '')
-- **Cost:** the Material's cost *Must be an integer (do not use '')
+- **Price:** the Material's price\
+  *Must be an integer
+- **Cost:** the Material's cost \
+  *Must be an integer
+- **Amount** the amount of Material on-hand
 
 ## References
 
