@@ -39,12 +39,11 @@ The network is composed by the following containers:
 
 Once it finishes downloading the images and starting the network, execute the following commands:
 
-`$ cd Processor`
-
-`$ npm install`
-
-`$ node index.js`
-
+```
+$ cd Processor
+$ npm install
+$ node index.js
+```
 You should see the following message:
 
 ```
