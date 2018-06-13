@@ -37,8 +37,7 @@ The network is composed by the following containers:
 **SHELL**\
   A shell container to access the Validator
 
-Once the it finishes downloading the images and starting the network,
-open a new terminal window. Navigate to the Processor folder, and execute the following commands:
+Once it finishes downloading the images and starting the network, execute the following commands:
 
 `$ cd Processor`
 
@@ -59,18 +58,18 @@ Registration of [Material 1.0] succeeded
 
 After the registration of the Material Transaction processor is completed, navigate to the material-client-js folder and execute the following commands:
 
-`cd material-client-js`
-
-`$ npm install`
-
-After the installation is completed, you can use the following command to submit transactions:
+```
+$ cd material-client-js
+$ npm install
+$ node init.js
+```
+You can submit transactions using the following command:
 
 `$ node index.js --T [string] --Verb [ Create | Update ]`
 
 The argument --T must follow this structure:
 
-` '{"ID":"001","Name":"Pizza","Group":"Frozen Food","Type":"Food","Price":20,"Cost":10,"Amount":100}' `
-
+`'{"ID":"001","Name":"Pizza","Group":"Frozen Food","Type":"Food","Price":20,"Cost":10,"Amount":100}'`
 
 **ID:** the Material's ID (i.e. 001)\
 **Name:** the Material's name (i.e. Pizza)\
