@@ -8,7 +8,7 @@ A transaction processor module for asset creation using Hyperledger Sawtooth blo
 
 First, bring up the network using the following command:
 
-`$ sudo docker-compose up`
+`$ sudo docker-compose up -f sawtooth-defaul.yaml`
 
 Docker images will be downloaded to create the required containers to build the network. 
 
@@ -45,8 +45,9 @@ You should see the following message:
 
 ```
 Starting Material Transaction Processor
-Connecting to Sawtooth validator at XXX.XXX.XXX.XXX...
-Registered...
+Connecting to Sawtooth validator at tcp://127.0.0.1:4004
+Connected to tcp://127.0.0.1:4004
+Registration of [Material 1.0] succeeded
 ```
 
 ## Client Set-Up

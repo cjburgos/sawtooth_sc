@@ -1,4 +1,3 @@
-const cbor = require('cbor')
 
 const input = {
   payloadIsValid: (payload) => {
@@ -52,3 +51,5 @@ const valueIsValid = (value) => {
 }
 
 module.exports = input
+
+

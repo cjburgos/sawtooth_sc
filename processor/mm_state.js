@@ -11,7 +11,7 @@ class MMState {
     }
 
     getMaterial(ID){
-        return this._loadMaterial(ID).then((Material)=> Material.get())
+        return this._loadMaterial(ID).then((Material)=> Material.get(ID))
     }
 
    setMaterial (ID, Properties) {
