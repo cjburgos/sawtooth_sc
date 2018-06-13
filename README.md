@@ -4,6 +4,11 @@
 
 A transaction processor module for asset creation using Hyperledger Sawtooth blockchain network. 
 
+## Pre-requisites
+
+- Install Docker Engine 
+- Install Docker Compose
+
 ## Transaction Processor Set-Up
 
 First, bring up the network using the following command:
