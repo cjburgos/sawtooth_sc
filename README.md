@@ -13,7 +13,7 @@ A transaction processor module for asset creation using Hyperledger Sawtooth blo
 
 First, bring up the network using the following command:
 
-`$ sudo docker-compose up -f sawtooth-defaul.yaml`
+`$ sudo docker-compose -f sawtooth-defaul.yaml up`
 
 Docker images will be downloaded to create the required containers to build the network. 
 
