@@ -9,8 +9,8 @@ const env = {
   privateKey: process.env.PRIVATE_KEY || '',
   publicKey: process.env.PUBLIC_KEY || '',
   restApiUrl: process.env.REST_API_URL || 'http://localhost:8008',
-  familyName: 'Material',
-  familyPrefix: leafHash('Material', 6),
+  familyName: 'material',
+  familyPrefix: leafHash('material', 6),
   familyVersion: '1.0'
 }
 

@@ -19,13 +19,13 @@ class MMHandler extends TransactionHandler {
     let payload = JSON.parse(pbuffer.toString('ascii',2,))
 
     if (payload.Verb === 'Create') {
-      return State.getMaterial(payload.Name)
-        .then((Material) => {
-          if (Material !== undefined) {
-            throw new InvalidTransaction('Invalid Action: Material already exists.')
-          }
+      // return State.getMaterial(payload.Name)
+      //   .then((Material) => {
+      //     if (Material !== undefined) {
+      //       throw new InvalidTransaction('Invalid Action: Material already exists.')
+      //     }
 
-          properties = payload.Properties
+          let properties = payload.Properties
 
           let createdMaterial = {
             ID: payload.Name,
@@ -37,11 +37,10 @@ class MMHandler extends TransactionHandler {
             Cost: properties[4],
             Amount: properties[5]
           }
+          
+          console.log(`The Material ${createdMaterial.ID} has been created with values ${createdMaterial}`)
 
-          console.log('The Material '+createdMaterial.ID+'has been created with values '+createdMaterial)
-
-          return MMState.setMaterial(payload.ID, createdMaterial)
-        })
+          return State.setMaterial(createdMaterial.ID, createdMaterial)
     } else if (payload.action === 'Update') {
       return MMState.getMaterial(payload.ID)
         .then((Material) => {

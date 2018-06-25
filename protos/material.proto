@@ -1,0 +1,24 @@
+
+
+syntax = "proto3";
+
+message Material {
+
+string material_id = 1;
+string material_name = 2;
+string material_group = 3;
+string material_type = 4;
+
+enum materialStatus {
+    ACTIVE = 0;
+    INACTIVE = 1;
+}
+
+materialStatus status = 5;
+uint64 create_date = 6;
+double material_price = 7;
+double material_cost = 8;
+uint32 material_amout = 9;
+
+}
+
