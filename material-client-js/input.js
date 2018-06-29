@@ -12,7 +12,6 @@ const input = {
       // Wait for the response from the validator receiving the transaction
       const txnRes = await transactor.post(txn)
       // Log only a few key items from the response, because it's a lot of info
-      console.log(txnRes.toString())
       console.log({
         status: txnRes.status,
         statusText: txnRes.statusText
@@ -27,7 +26,7 @@ const input = {
 
 const verbIsValid = (verb) => {
   const trimmed = verb.trim()
-  if (trimmed === 'create' || trimmed === 'update') return true
+  if (trimmed === 'create' || trimmed === 'get') return true
   else return false
 }
 

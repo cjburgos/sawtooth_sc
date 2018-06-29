@@ -28,9 +28,13 @@ const SawtoothClientFactory = (factoryOptions) => {
       return {
         async post(payload, txnOptions) {
 
+          let OPayload = JSON.parse(payload)
+          let Material_ID = OPayload.ID
+
+          const _MaterialAddress = _familyNamespace + leafHash(Material_ID,64)
           // Encode the payload
           const payloadBytes = _familyEncoder(payload)
-
+          
           // Encode a transaction header
           const transactionHeaderBytes = protobuf.TransactionHeader.encode({
             familyName: transactorOptions.familyName,
@@ -64,6 +68,7 @@ const SawtoothClientFactory = (factoryOptions) => {
 
           // Sign the batch header and create the batch
           const batchSignature = factoryOptions.enclave.sign(batchHeaderBytes).toString('hex')
+
           const batch = protobuf.Batch.create({
             header: batchHeaderBytes,
             headerSignature: batchSignature,
@@ -74,7 +79,7 @@ const SawtoothClientFactory = (factoryOptions) => {
           const batchListBytes = protobuf.BatchList.encode({
             batches: [batch]
           }).finish()
-
+          
           // Post the batch list
           try {
             const res = await axios({

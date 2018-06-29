@@ -64,9 +64,9 @@ $ node init.js
 ```
 You can submit transactions using the following command:
 
-`$ node index.js --T [string] --Verb [ Create | Update ]`
+`$ node index.js --T [string] --Verb [ Create | Get ]`
 
-The argument --T must follow this structure:
+For action **Create**, the argument --T must follow this structure:
 
 `'{"ID":"001","Name":"Pizza","Group":"Frozen Food","Type":"Food","Price":20,"Cost":10,"Amount":100}'`
 
@@ -77,6 +77,10 @@ The argument --T must follow this structure:
 **Price:** the Material's price\
 **Cost:** the Material's cost\
 **Amount** the amount of Material on-hand
+
+
+For action **Get**, the argument --T must follow this structure:
+`'{"ID":"001"}'`
 
 ## References
 

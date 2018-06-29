@@ -1,8 +1,8 @@
 const { EnclaveFactory } = require('./enclave')
 const { SawtoothClientFactory } = require('./sawtooth-client')
 const argv = require('yargs')
-  .usage('Usage: node $0 --T [string] --verb [create,update]')
-  .choices('verb', ['create','update'])
+  .usage('Usage: node $0 --T [string] --verb [create, get]')
+  .choices('verb', ['create','get'])
   .string(['T','verb'])
   .describe('T', 'the material parameters')
   .describe('verb', 'action to take on the entry')
@@ -32,11 +32,20 @@ const MaterialTransactor = MaterialClient.newTransactor({
 })
 
 const T_Obj = JSON.parse(argv.T)
-
-const newPayload = {
-  ID: T_Obj.ID,
-  Properties: [T_Obj.Name, T_Obj.Group, T_Obj.Type, T_Obj.Price, T_Obj.Cost, T_Obj.Amount],
-  Verb: argv.verb,
+let newPayload
+if (argv.verb === 'create'){
+  newPayload = {
+    ID: T_Obj.ID,
+    Properties: [T_Obj.Name, T_Obj.Group, T_Obj.Type, T_Obj.Price, T_Obj.Cost, T_Obj.Amount],
+    Verb: argv.verb,
+  }
+}
+else {
+  newPayload = {
+    ID: T_Obj.ID,
+    Properties:[],
+    Verb: argv.verb
+  }
 }
 
 if (input.payloadIsValid(newPayload)) {
