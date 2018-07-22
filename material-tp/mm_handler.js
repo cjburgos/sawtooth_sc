@@ -13,10 +13,11 @@ class MMHandler extends TransactionHandler {
 
   apply(transactionProcessRequest, context) {
     let payload = mmPayload.fromBytes(transactionProcessRequest.payload)
-    let State = new mmState(context)
-    let header = transactionProcessRequest.header
-    let creator = header.signerPublicKey
-    
+    let State = new mmState(context);
+    let header = transactionProcessRequest.header;
+    let creator = header.signerPublicKey;
+    var D = new Date();
+
     if (payload.Verb === 'create') {
       return State.getMaterial(payload.ID)
       .then((Material)=>{
@@ -35,7 +36,9 @@ class MMHandler extends TransactionHandler {
             Status: 'ACTIVE',
             Price: properties[3],
             Cost: properties[4],
-            Amount: properties[5]
+            Amount: properties[5],
+            Create_Date: D.toISOString(),
+            Creator: creator
           }
           
           console.log(`Submitting new Material with ID = ${createdMaterial.ID} for creation`)
@@ -43,18 +46,15 @@ class MMHandler extends TransactionHandler {
         })
     }
     else if(payload.Verb === 'get'){
-      return State.getMaterial(payload.ID)
-      .then((Material)=>{
-        if(Material){
-          console.log(Material)
-        }
-        else{
-          console.log('Material not found')
-        }
-      })
+       return State.getMaterial(payload.ID).then(()=>{
+            console.log(Material);
+       }, (errorMessage) => {
+            console.log('Material not found')
+            console.log(errorMessage)
+       });
     }
     else {
-      throw new InvalidTransaction(`Action must be Create,  instead its ${payload.verb}`)
+      throw new InvalidTransaction(`Action must be either Create or Get,  instead its ${payload.verb}`)
     } 
   }
 }

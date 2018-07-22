@@ -16,9 +16,6 @@ const argv = require('yargs')
 const env = require('./env')
 const input = require('./input')
 
-console.log(`Public Key is: ${env.privateKey}`)
-console.log(`Private Key is: ${env.privateKey}`)
-
 const enclave = EnclaveFactory(Buffer.from(env.privateKey, 'hex'))
 
 const MaterialClient = SawtoothClientFactory({
@@ -33,6 +30,7 @@ const MaterialTransactor = MaterialClient.newTransactor({
 
 const T_Obj = JSON.parse(argv.T)
 let newPayload
+
 if (argv.verb === 'create'){
   newPayload = {
     ID: T_Obj.ID,

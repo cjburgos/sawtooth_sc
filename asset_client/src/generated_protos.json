@@ -1,0 +1,343 @@
+{
+  "nested": {
+    "Agent": {
+      "fields": {
+        "publicKey": {
+          "type": "string",
+          "id": 1
+        },
+        "name": {
+          "type": "string",
+          "id": 2
+        },
+        "timestamp": {
+          "type": "uint64",
+          "id": 3
+        }
+      }
+    },
+    "AgentContainer": {
+      "fields": {
+        "entries": {
+          "rule": "repeated",
+          "type": "Agent",
+          "id": 1
+        }
+      }
+    },
+    "SCPayload": {
+      "fields": {
+        "action": {
+          "type": "Action",
+          "id": 1
+        },
+        "timestamp": {
+          "type": "uint64",
+          "id": 2
+        },
+        "createAgent": {
+          "type": "CreateAgentAction",
+          "id": 3
+        },
+        "createMaterial": {
+          "type": "CreateMaterialAction",
+          "id": 4
+        }
+      },
+      "nested": {
+        "Action": {
+          "values": {
+            "CREATE_AGENT": 0,
+            "CREATE_MATERIAL": 1
+          }
+        }
+      }
+    },
+    "CreateAgentAction": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "CreateMaterialAction": {
+      "fields": {
+        "materialId": {
+          "type": "string",
+          "id": 1
+        },
+        "properties": {
+          "rule": "repeated",
+          "type": "PropertyValue",
+          "id": 3
+        }
+      }
+    },
+    "Property": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        },
+        "materialId": {
+          "type": "string",
+          "id": 2
+        },
+        "dataType": {
+          "type": "PropertySchema.DataType",
+          "id": 3
+        },
+        "reporters": {
+          "rule": "repeated",
+          "type": "Reporter",
+          "id": 4
+        },
+        "currentPage": {
+          "type": "uint32",
+          "id": 5
+        },
+        "wrapped": {
+          "type": "bool",
+          "id": 6
+        }
+      },
+      "nested": {
+        "Reporter": {
+          "fields": {
+            "publicKey": {
+              "type": "string",
+              "id": 1
+            },
+            "authorized": {
+              "type": "bool",
+              "id": 2
+            },
+            "index": {
+              "type": "uint32",
+              "id": 3
+            }
+          }
+        }
+      }
+    },
+    "PropertyContainer": {
+      "fields": {
+        "entries": {
+          "rule": "repeated",
+          "type": "Property",
+          "id": 1
+        }
+      }
+    },
+    "PropertySchema": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        },
+        "dataType": {
+          "type": "DataType",
+          "id": 2
+        },
+        "required": {
+          "type": "bool",
+          "id": 3
+        }
+      },
+      "nested": {
+        "DataType": {
+          "values": {
+            "TYPE_UNSET": 0,
+            "BYTES": 1,
+            "BOOLEAN": 2,
+            "INT": 3,
+            "STRING": 4,
+            "LOCATION": 7,
+            "FLOAT": 8
+          }
+        }
+      }
+    },
+    "PropertyValue": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        },
+        "dataType": {
+          "type": "PropertySchema.DataType",
+          "id": 2
+        },
+        "bytesValue": {
+          "type": "bytes",
+          "id": 11
+        },
+        "booleanValue": {
+          "type": "bool",
+          "id": 12
+        },
+        "intValue": {
+          "type": "sint64",
+          "id": 13
+        },
+        "stringValue": {
+          "type": "string",
+          "id": 14
+        },
+        "locationValue": {
+          "type": "Location",
+          "id": 17
+        },
+        "floatValue": {
+          "type": "float",
+          "id": 18
+        }
+      }
+    },
+    "PropertyPage": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        },
+        "recordId": {
+          "type": "string",
+          "id": 2
+        },
+        "reportedValues": {
+          "rule": "repeated",
+          "type": "ReportedValue",
+          "id": 3
+        }
+      },
+      "nested": {
+        "ReportedValue": {
+          "fields": {
+            "reporterIndex": {
+              "type": "uint32",
+              "id": 1
+            },
+            "timestamp": {
+              "type": "uint64",
+              "id": 2
+            },
+            "bytesValue": {
+              "type": "bytes",
+              "id": 11
+            },
+            "booleanValue": {
+              "type": "bool",
+              "id": 12
+            },
+            "intValue": {
+              "type": "sint64",
+              "id": 13
+            },
+            "stringValue": {
+              "type": "string",
+              "id": 14
+            },
+            "locationValue": {
+              "type": "Location",
+              "id": 17
+            },
+            "floatValue": {
+              "type": "float",
+              "id": 18
+            }
+          }
+        }
+      }
+    },
+    "PropertyPageContainer": {
+      "fields": {
+        "entries": {
+          "rule": "repeated",
+          "type": "PropertyPage",
+          "id": 1
+        }
+      }
+    },
+    "ProposalContainer": {
+      "fields": {
+        "entries": {
+          "rule": "repeated",
+          "type": "Proposal",
+          "id": 1
+        }
+      }
+    },
+    "Material": {
+      "fields": {
+        "materialId": {
+          "type": "string",
+          "id": 1
+        },
+        "MaterialType": {
+          "type": "string",
+          "id": 2
+        },
+        "owners": {
+          "rule": "repeated",
+          "type": "AssociatedAgent",
+          "id": 3
+        },
+        "custodians": {
+          "rule": "repeated",
+          "type": "AssociatedAgent",
+          "id": 4
+        },
+        "final": {
+          "type": "bool",
+          "id": 5
+        }
+      },
+      "nested": {
+        "AssociatedAgent": {
+          "fields": {
+            "agentId": {
+              "type": "string",
+              "id": 1
+            },
+            "timestamp": {
+              "type": "uint64",
+              "id": 2
+            }
+          }
+        }
+      }
+    },
+    "RecordContainer": {
+      "fields": {
+        "entries": {
+          "rule": "repeated",
+          "type": "Record",
+          "id": 1
+        }
+      }
+    },
+    "RecordType": {
+      "fields": {
+        "name": {
+          "type": "string",
+          "id": 1
+        },
+        "properties": {
+          "rule": "repeated",
+          "type": "PropertySchema",
+          "id": 2
+        }
+      }
+    },
+    "RecordTypeContainer": {
+      "fields": {
+        "entries": {
+          "rule": "repeated",
+          "type": "RecordType",
+          "id": 1
+        }
+      }
+    }
+  }
+}

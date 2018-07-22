@@ -1,0 +1,61 @@
+{ "Materials" : 
+[
+    {
+        "001" : {
+            "name":"Aviation Engine Part",
+            "group":"Aircraft",
+            "type":"Engine",
+            "supplier": ["Aviation OEM", "Millenium Engines"],
+            "price":5000,
+            "cost":3500,
+            "amount":10
+        }
+    },
+    {
+        "ID" : "002",
+        "Properties": {
+            "name":"WS X5R6",
+            "group":"Weapon Systems",
+            "type":"Rockets",
+            "supplier": ["Integrated WS", "WSM"],
+            "price":10000,
+            "cost":5000,
+            "amount":20
+        }
+    },
+    {   "ID":"003",
+        "Properties": {
+            "name":"X5 Micro Circuit",
+            "group":"Electronics",
+            "type":"Microcircuits",
+            "supplier": ["Electronic OEM", "Trusted Tech"],
+            "price":5000,
+            "cost":4800,
+            "amount":200
+        }
+    },
+    {   "ID":"004",
+        "Properties": {
+            "name":"X6 Micro Circuit",
+            "group":"Electronics",
+            "type":"Microcircuits",
+            "supplier": ["Electronic OEM", "Advance Micro Tech, Inc."],
+            "price":5000,
+            "cost":4500,
+            "amount":210
+        }
+    },
+    {   "ID":"005",
+        "Properties": {
+            "name":"ERA - Advance WS",
+            "group":"Weapon Systems",
+            "type":"Rockets",
+            "supplier": ["Regtech, Inc.", "GSW"],
+            "price":15000,
+            "cost":10000,
+            "amount":10
+        }
+    }
+]
+}
+

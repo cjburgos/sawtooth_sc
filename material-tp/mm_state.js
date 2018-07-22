@@ -72,7 +72,7 @@ module.exports = {
 
 const _deserialize = (data) => {
   let mmIterable = data.split('|').map(x => x.split(','))
-    .map(x => [x[0], {ID: x[0],Name: x[1],Group: x[2],Type: x[3],Status: x[4],Price: x[5],Cost: x[6],Amount: x[7] }]);
+    .map(x => [x[0], {ID: x[0],Name: x[1],Group: x[2],Type: x[3],Status: x[4],Price: x[5],Cost: x[6],Amount: x[7], CreateDate: x[8], Creator: x[9] }]);
   return new Map(mmIterable);
 };
 
@@ -81,7 +81,7 @@ const _serialize = (Material) => {
   for (let M of Material) {
     let id = M[0]
     let Property = M[1]
-    mmStrs.push([id, Property.Name, Property.Group, Property.Type, Property.Status, Property.Price, Property.Cost, Property.Amount].join(','));
+    mmStrs.push([id, Property.Name, Property.Group, Property.Type, Property.Status, Property.Price, Property.Cost, Property.Amount, Property.CreateDate, Property.Creator].join(','));
   }
   
   mmStrs.sort();

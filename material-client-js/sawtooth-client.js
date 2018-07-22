@@ -28,10 +28,6 @@ const SawtoothClientFactory = (factoryOptions) => {
       return {
         async post(payload, txnOptions) {
 
-          let OPayload = JSON.parse(payload)
-          let Material_ID = OPayload.ID
-
-          const _MaterialAddress = _familyNamespace + leafHash(Material_ID,64)
           // Encode the payload
           const payloadBytes = _familyEncoder(payload)
           
@@ -60,7 +56,8 @@ const SawtoothClientFactory = (factoryOptions) => {
           })
 
           // Batch the transactions and encode a batch header
-          const transactions = [transaction]
+          const transactions = []
+          transactions.push(transaction)
           const batchHeaderBytes = protobuf.BatchHeader.encode({
             signerPublicKey: factoryOptions.enclave.publicKey.toString('hex'),
             transactionIds: transactions.map((txn) => txn.headerSignature),

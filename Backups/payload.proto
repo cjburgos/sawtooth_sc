@@ -1,0 +1,33 @@
+
+
+syntax = "proto3";
+
+import "material.proto";
+
+message MaterialPayload {
+    enum Action {
+        CREATE_MATERIAL = 0;
+        UPDATE_MATERIAL = 1;
+        DELETE_MATERIAL = 2;
+    }
+
+    Action action = 1;
+    uint64 timestamp = 2;
+
+    CreateMaterialAction create_material = 3;
+    UpdateMaterialAction update_material = 4;
+    DeleteMaterialAction delete_material = 5;
+
+}
+
+message CreateMaterialAction {
+
+}
+
+message UpdateMaterialAction {
+    
+}
+
+message DeleteMaterialAction {
+    
+}
