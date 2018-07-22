@@ -2,7 +2,7 @@
 
 const express = require('express')
 const db = require('./db')
-const blockchain = require('./blockchain')
+// const blockchain = require('./blockchain')
 const protos = require('./blockchain/protos')
 const api = require('./api')
 const config = require('./system/config')
@@ -13,7 +13,7 @@ const app = express()
 Promise.all([
   db.connect(),
   protos.compile(),
-  blockchain.connect()
+  // blockchain.connect()
 ])
   .then(() => {
     app.use('/', api)
