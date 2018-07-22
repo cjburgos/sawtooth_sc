@@ -23,8 +23,7 @@ const stateTables = [
   'agents',
   'materials',
   'properties',
-  'propertyPages',
-  'proposals'
+  'propertyPages'
 ]
 
 const getForkedDocRemover = blockNum => tableName => {
