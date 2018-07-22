@@ -16,7 +16,7 @@ const FAMILY_NAME = 'supply_chain'
 const FAMILY_VERSION = '1.0'
 const NAMESPACE = 'a62258'
 
-const SERVER = process.env.SERVER || 'http://35.190.164.236:3000'
+const SERVER = process.env.SERVER || 'http://localhost:3000'
 const RETRY_WAIT = process.env.RETRY_WAIT || 5000
 
 const awaitServerInfo = () => {
