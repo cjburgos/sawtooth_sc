@@ -32,10 +32,6 @@ const compile = () => {
       'PropertyValue',
       'Location'
     ]),
-    loadProtos('proposal.proto', [
-      'Proposal',
-      'ProposalContainer'
-    ]),
     loadProtos('material.proto', [
       'Material',
       'MaterialContainer'

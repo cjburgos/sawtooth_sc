@@ -56,13 +56,13 @@ class mmState {
 }
 
 const _hash = (x) =>
-  crypto.createHash('sha512').update(x).digest('hex').toLowerCase().substring(0, 64);
+  crypto.createHash('sha512').update(x).digest('hex').toLowerCase().substring(0, 62);
 
 const MM_FAMILY = 'material';
 
 const MM_NAMESPACE = _hash(MM_FAMILY).substring(0, 6);
 
-const _makeMMAddress = (x) => MM_NAMESPACE + _hash(x);
+const _makeMMAddress = (x) => MM_NAMESPACE + 'ec' + _hash(x);
 
 module.exports = {
   MM_NAMESPACE,

@@ -39,7 +39,6 @@ const getProtoName = address => {
 
   const names = {
     ae: 'Agent',
-    aa: 'Proposal',
     ec: 'Material'
   }
   if (names[typePrefix]) return names[typePrefix]
