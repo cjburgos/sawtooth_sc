@@ -33,7 +33,7 @@ message Property {
   string name = 1;
 
   // The natural key of the Property's associated Record.
-  string record_id = 2;
+  string material_id = 2;
 
   // The Property's type (int, string, etc.)
   PropertySchema.DataType data_type = 3;
@@ -146,7 +146,7 @@ message PropertyPage {
   // its associated Record. These are required to distinguish pages
   // with colliding addresses.
   string name = 1;
-  string record_id = 2;
+  string material_id = 2;
 
   // ReportedValues are sorted first by timestamp, then by
   // reporter_index

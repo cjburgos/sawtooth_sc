@@ -26,9 +26,11 @@ const hasCurrentBlock = currentBlock => obj => {
     obj('endBlockNum').gt(currentBlock)
   )
 }
-
+//Utility function
 const getAttribute = attr => obj => obj(attr)
-const getRecordId = getAttribute('recordId')
+
+
+const getRecordId = getAttribute('material_id')
 const getPublicKey = getAttribute('publicKey')
 const getName = getAttribute('name')
 const getReporters = getAttribute('reporters')
@@ -41,10 +43,13 @@ const hasPublicKey = key => obj => {
   )
 }
 
+//Funcion que devuelve el public key de un Agent segun el Role deseado
 const getAssociatedAgentId = role => record => record(role).nth(-1)('agentId')
+//Devuelve el Public Key del Owner o Custodian
 const getOwnerId = getAssociatedAgentId('owners')
 const getCustodianId = getAssociatedAgentId('custodians')
 
+//Devuelve el record asociado a el Public Key de un Agent
 const isAssociatedWithRecord = association => agent => record => {
   return r.eq(
     association(record),
@@ -52,7 +57,9 @@ const isAssociatedWithRecord = association => agent => record => {
   )
 }
 
+//Devuelve el PublicKey del Owner de un Record y luego verifica si el Public del Agent haciendo el Call es igual al del Record
 const isRecordOwner = isAssociatedWithRecord(getOwnerId)
+//Devuelve el PublicKey del Custodian de un Record y luego verifica si el Public del Agent haciendo el Call es igual al del Record
 const isRecordCustodian = isAssociatedWithRecord(getCustodianId)
 
 const isReporter = agent => property => {

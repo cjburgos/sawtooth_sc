@@ -2,6 +2,8 @@
 
 syntax = "proto3";
 
+import "property.proto";
+
 message Material {
 
 string material_id = 1;
@@ -16,9 +18,12 @@ enum materialStatus {
 
 materialStatus status = 5;
 uint64 create_date = 6;
-double material_price = 7;
-double material_cost = 8;
-uint32 material_amout = 9;
 
+repeated PropertySchema properties = 7;
+
+}
+
+message MaterialContainer {
+repeated Material entries = 1;
 }
 

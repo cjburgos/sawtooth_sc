@@ -51,22 +51,14 @@ const compile = () => {
       'Proposal',
       'ProposalContainer'
     ]),
-    loadProtos('record.proto', [
-      'Record',
-      'RecordContainer',
-      'RecordType',
-      'RecordTypeContainer'
+    loadProtos('material.proto', [
+      'Material',
+      'MaterialContainer'
     ]),
     loadProtos('payload.proto', [
       'SCPayload',
       'CreateAgentAction',
-      'FinalizeRecordAction',
-      'CreateRecordAction',
-      'CreateRecordTypeAction',
-      'UpdatePropertiesAction',
-      'CreateProposalAction',
-      'AnswerProposalAction',
-      'RevokeReporterAction'
+      'CreateMaterialAction'
     ])
   ])
 }
