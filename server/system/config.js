@@ -25,11 +25,12 @@ const initConfigValue = (key, defaultValue = null) => {
 initConfigValue('PORT', 3000)
 initConfigValue('RETRY_WAIT', 5000)
 initConfigValue('DEFAULT_SUBMIT_WAIT', 5000000)
-initConfigValue('VALIDATOR_URL', 'tcp://localhost:4004')
-initConfigValue('DB_HOST', 'localhost')
+initConfigValue('VALIDATOR_URL', 'tcp://35.190.164.236:4004')
+initConfigValue('DB_HOST', '35.190.164.236')
 initConfigValue('DB_PORT', 28015)
 initConfigValue('DB_NAME', 'supply_chain')
 initConfigValue('SIGNING_ALGORITHM', 'secp256k1')
+initConfigValue('PREFIX',"a62258")
 
 // Setup config variables with no defaults
 initConfigValue('MAPS_API_KEY')

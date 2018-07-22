@@ -1,0 +1,9 @@
+{
+  "PREFIX":"a62258",
+  "RETRY_WAIT": 5000,
+  "VALIDATOR_URL": "tcp://35.190.164.236:4004",
+  "DB_HOST": "35.190.164.236",
+  "DB_PORT": 28015,
+  "DB_NAME": "supply_chain"
+
+}

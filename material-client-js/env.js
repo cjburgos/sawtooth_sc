@@ -8,7 +8,7 @@ dotenv.config()
 const env = {
   privateKey: process.env.PRIVATE_KEY || '',
   publicKey: process.env.PUBLIC_KEY || '',
-  restApiUrl: process.env.REST_API_URL || 'http://localhost:8008',
+  restApiUrl: process.env.REST_API_URL || 'http://35.190.164.236:8008',
   familyName: 'material',
   familyPrefix: leafHash('material', 6),
   familyVersion: '1.0'
