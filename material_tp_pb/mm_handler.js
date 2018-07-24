@@ -13,41 +13,31 @@ class MMHandler extends TransactionHandler {
   }
 
   apply(transactionProcessRequest, context) {
-    let payload = mmPayload.fromBytes(transactionProcessRequest.payload)
     let State = new mmState(context);
     let header = transactionProcessRequest.header;
-    let creator = header.signerPublicKey;
+    let payload = mmPayload.verifiyAction(transactionProcessRequest.payload)
     var D = new Date();
 
-    console.log(protos)
-    const MaterialTemplate = protos.Material
-
-    if (payload.Verb === 'create') {
+    if (payload.action === 'createMaterial') {
       return State.getMaterial(payload.ID)
       .then((Material)=>{
         if(Material !== undefined){
           throw new InvalidTransaction('Invalid Action: Material already exists.')
         }
-      
 
-          let properties = payload.Properties
-
-          let createdMaterial = {
-            ID: payload.ID,
-            Name: properties[0],
-            Group: properties[1],
-            Type: properties[2],
-            Status: 'ACTIVE',
-            Price: properties[3],
-            Cost: properties[4],
-            Amount: properties[5],
-            Create_Date: D.toISOString(),
-            Creator: creator
-          }
-          
-          
-          console.log(`Submitting new Material with ID = ${createdMaterial.ID} for creation`)
-          return State.setMaterial(createdMaterial.ID, createdMaterial)
+          return MaterialTemplate.create({
+            material_id: payload.ID,
+            material_name: properties[0],
+            material_group: properties[1],
+            material_type: properties[2],
+            material_status: 'ACTIVE',
+            material_price: properties[3],
+            material_cost: properties[4],
+            material_amount: properties[5],
+            create_date: D.toISOString(),
+            material_creator: header.signerPublicKey
+          })
+          .then(State.setMaterial(MaterialTemplate.material_id, MaterialTemplate.SerializeToString()))
         })
     }
     else if(payload.Verb === 'get'){

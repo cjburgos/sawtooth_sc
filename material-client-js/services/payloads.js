@@ -1,4 +1,19 @@
-
+/**
+ * Copyright 2017 Intel Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ----------------------------------------------------------------------------
+ */
 'use strict'
 
 const _ = require('lodash')
@@ -9,7 +24,14 @@ const protoJson = require('../generated_protos.json')
 
 // Keys for payload actions
 const ACTIONS = [
-  'CREATE_MATERIAL',
+  'CREATE_AGENT',
+  'CREATE_RECORD',
+  'FINALIZE_RECORD',
+  'CREATE_RECORD_TYPE',
+  'UPDATE_PROPERTIES',
+  'CREATE_PROPOSAL',
+  'ANSWER_PROPOSAL',
+  'REVOKE_REPORTER'
 ]
 
 // Create dictionary with key, enum and class names
@@ -29,6 +51,10 @@ const actionMap = ACTIONS.reduce((map, enumName) => {
 // Compile Protobufs
 const root = protobuf.Root.fromJSON(protoJson)
 const SCPayload = root.lookup('SCPayload')
+const PropertyValue = root.lookup('PropertyValue')
+const PropertySchema = root.lookup('PropertySchema')
+const Location = root.lookup('Location')
+const Proposal = root.lookup('Proposal')
 _.map(actionMap, action => {
   return _.set(action, 'proto', root.lookup(action.name))
 })
@@ -46,8 +72,9 @@ const schemaXform = propertiesXformer(prop => {
 })
 
 _.map(actionMap, action => _.set(action, 'xform', x => x))
-actionMap.createMaterial.xform = valueXform
-
+actionMap.createRecord.xform = valueXform
+actionMap.createRecordType.xform = schemaXform
+actionMap.updateProperties.xform = valueXform
 
 /**
  * Encodes a new SCPayload with the specified action
@@ -74,8 +101,11 @@ const actionMethods = _.reduce(actionMap, (methods, value, key) => {
 }, {})
 
 // Add enums on an action by action basis
-actionMethods.createMaterial.enum = PropertySchema.DataType
-
+actionMethods.createRecord.enum = PropertySchema.DataType
+actionMethods.createRecordType.enum = PropertySchema.DataType
+actionMethods.updateProperties.enum = PropertySchema.DataType
+actionMethods.createProposal.enum = Proposal.Role
+actionMethods.answerProposal.enum = actionMap.answerProposal.proto.Response
 
 module.exports = _.assign({
   encode,

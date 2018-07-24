@@ -2,24 +2,20 @@
 
 syntax = "proto3";
 
-import "property.proto";
-
 message Material {
-
+    
 string material_id = 1;
 string material_name = 2;
 string material_group = 3;
 string material_type = 4;
 
-enum materialStatus {
-    ACTIVE = 0;
-    INACTIVE = 1;
-}
 
-materialStatus status = 5;
-uint64 create_date = 6;
+uint64 create_date = 5;
 
-repeated PropertySchema properties = 7;
+sint64 material_price = 6;
+sint64 material_cost = 7;
+sint64 material_amount = 8;
+string material_creator = 9;
 
 }
 

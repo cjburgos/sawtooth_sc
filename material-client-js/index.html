@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Materials</title>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+
+    <form class="container" id="creatematerial" method="post" >
+      <div class="form-group" style="margin:40px">
+          <H2> <b>Create New Material</b></H2>
+          <p> Sends payload to the Validator Network to create a material on the ledger.</p>
+          <b>Material ID:</b><br>
+          <input type="text" name="id"><br>
+          <br><b>Material Name:</b><br>
+          <input type="text" name="name"><br>
+          <br><b>Material Group:</b><br>
+          <input type="text" name="group"><br>
+          <br><b>Material Type:</b><br>
+          <input type="text" name="type"><br>
+          <br><b>Material Price:</b><br>
+          <input type="text" name="price"><br>
+          <br><b>Material Cost:</b><br>
+          <input type="text" name="cost"><br>
+          <br><b>Material Amount:</b><br>
+          <input type="text" name="amount">
+          <br>
+          <br><b>Material Status:</b><br>
+          <input type="radio" name="status" value="1" checked> Active<br>
+          <input type="radio" name="status" value="0"> Inactive<br>
+        <br>
+        <button type="submit" class="btn btn-primary" onclick="js/input.js"> Submit </button>
+      </div>
+    </form>
+
+</html>

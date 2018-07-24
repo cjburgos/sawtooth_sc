@@ -1,0 +1,132 @@
+{
+  "nested": {
+    "Material": {
+      "fields": {
+        "materialId": {
+          "type": "string",
+          "id": 1
+        },
+        "materialName": {
+          "type": "string",
+          "id": 2
+        },
+        "materialGroup": {
+          "type": "string",
+          "id": 3
+        },
+        "materialType": {
+          "type": "string",
+          "id": 4
+        },
+        "createDate": {
+          "type": "uint64",
+          "id": 5
+        },
+        "materialPrice": {
+          "type": "sint64",
+          "id": 6
+        },
+        "materialCost": {
+          "type": "sint64",
+          "id": 7
+        },
+        "materialAmount": {
+          "type": "sint64",
+          "id": 8
+        },
+        "materialCreator": {
+          "type": "string",
+          "id": 9
+        }
+      }
+    },
+    "MaterialContainer": {
+      "fields": {
+        "entries": {
+          "rule": "repeated",
+          "type": "Material",
+          "id": 1
+        }
+      }
+    },
+    "SCPayload": {
+      "fields": {
+        "action": {
+          "type": "Action",
+          "id": 1
+        },
+        "timestamp": {
+          "type": "uint64",
+          "id": 2
+        },
+        "createAgent": {
+          "type": "CreateAgentAction",
+          "id": 3
+        },
+        "createMaterial": {
+          "type": "CreateMaterialAction",
+          "id": 4
+        }
+      },
+      "nested": {
+        "Action": {
+          "values": {
+            "CREATE_MATERIAL": 0
+          }
+        }
+      }
+    },
+    "CreateMaterialAction": {
+      "fields": {
+        "materialId": {
+          "type": "string",
+          "id": 1
+        },
+        "materialName": {
+          "type": "string",
+          "id": 2
+        },
+        "materialGroup": {
+          "type": "string",
+          "id": 3
+        },
+        "materialType": {
+          "type": "string",
+          "id": 4
+        },
+        "materialStatus": {
+          "type": "Status",
+          "id": 5
+        },
+        "createDate": {
+          "type": "uint64",
+          "id": 6
+        },
+        "materialPrice": {
+          "type": "double",
+          "id": 7
+        },
+        "materialCost": {
+          "type": "double",
+          "id": 8
+        },
+        "materialAmout": {
+          "type": "uint32",
+          "id": 9
+        },
+        "materialCreator": {
+          "type": "string",
+          "id": 10
+        }
+      },
+      "nested": {
+        "Status": {
+          "values": {
+            "ACTIVE": 0,
+            "INACTIVE": 1
+          }
+        }
+      }
+    }
+  }
+}

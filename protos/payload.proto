@@ -1,12 +1,9 @@
 
 syntax = "proto3";
 
-import "property.proto";
-
 message SCPayload {
   enum Action {
-    CREATE_AGENT = 0;
-    CREATE_MATERIAL = 1;
+    CREATE_MATERIAL = 0;
   }
 
   Action action = 1;
@@ -18,17 +15,9 @@ message SCPayload {
   // The transaction handler will read from just one of these fields
   // according to the Action.
   CreateAgentAction create_agent = 3;
-  CreateMaterialAction create_record = 4;
+  CreateMaterialAction create_material = 4;
 
 }
-
-
-message CreateAgentAction {
-  // The human-readable name of the Agent. This does not need to be
-  // unique.
-  string name = 1;
-}
-
 
 message CreateMaterialAction {
     
@@ -37,15 +26,16 @@ message CreateMaterialAction {
     string material_group = 3;
     string material_type = 4;
     
-    enum materialStatus {
+    enum Status {
         ACTIVE = 0;
         INACTIVE = 1;
     }
     
-    materialStatus status = 5;
+    Status material_status = 5;
     uint64 create_date = 6;
     double material_price = 7;
     double material_cost = 8;
     uint32 material_amout = 9;
+    string material_creator = 10;
   
   }
